@@ -1,45 +1,24 @@
-# def subs (str) 
-#   len = str.length # 3
-#   str = str.split("")
-#   for i in 0..len-1
-#     # puts i
-#     for j in 0..len-i-1
-#       print "j => #{len-j-i} "
-#       for k in i..len-j-i-1
-#         # print 
-#         print "K => #{k} "
-#         # print str[k]
-#       end
-#       puts
-#     end
-#   puts
-#   end
-# end
-
-# subs("abc")
-
-
-def subs (str) 
-  len = str.length
-  str = str.split("")
-  for i in 1..len
-    # puts i
-    for j in 0..len-1
-      # print j
-      # puts
-      # puts "#{j} => #{i}"
-      # puts
-      for k in j..i-1
-        # puts
-        # print "k => #{k}"
-        # puts
-        print str[k]
-        # puts
+def subs (str, n) 
+  begin
+    raise "Input cannot be empty" if n == 0
+    sequence = [] 
+    for i in 0..2**n-1
+      seq = ""
+      for j in 0..n-1
+        if(i & (1<< j) != 0)
+          seq << str[j]
+        end
       end
-      puts
+      # puts seq
+      sequence.push(seq)
     end
-    # puts
+  puts sequence.inspect
+  rescue => e 
+    puts e.message
   end
 end
 
-subs("abc")
+print "Enter a string : "
+input = gets.chomp
+n = input.length
+subs(input, n)

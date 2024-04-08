@@ -7,7 +7,7 @@ def Reomve_vowel(str)
   vowels = {a: true, e: true, i: true, o: true, u: true}
   result = ""
   for i in 0..str.length-1
-    if (!vowels[:"#{str[i].downcase}"])
+    if (!vowels[str[i].downcase.to_sym])
       result += str[i]
     end
   end
