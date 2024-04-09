@@ -17,28 +17,38 @@
 #   end
 # end
 
+class Array_utlis
+  attr_reader :result
+  def initialize(str, length, sum)
+    @result = ""
+    @str = str
+    @n = length
+    @sum  = sum
+  end
 
-def subs (str, n, sum) 
-  begin
-    raise "Input cannot be empty" if n == 0
-    sequence = [] 
-    for i in 0..2**n-1
-      seq = ""
-      result = 0
-      index = ""
-      for j in 0..n-1
-        if(i & (1<< j) != 0)
-          index << j.to_s
-          result += str[j]
+  def subs () 
+    begin
+      raise "Input cannot be empty" if @n == 0
+      sequence = [] 
+      for i in 0..2**@n-1
+        seq = ""
+        result = 0
+        index = ""
+        for j in 0..@n-1
+          if(i & (1<< j) != 0)
+            index << j.to_s
+            result += @str[j]
+          end
         end
+        return @result = "sum found at index #{index}" if result == @sum && index.size == 1
+        return @result = "Sum found between indexes #{index[0]} and #{index[-1]}" if result == @sum
+        # puts result
+        @result = result
       end
-      return "sum found at index #{index}" if result == sum && index.size == 1
-      return "Sum found between indexes #{index[0]} and #{index[-1]}" if result == sum
-      puts result
+      return @result =  "No subarray found"
+    rescue => e 
+      puts e.message
     end
-    return "No subarray found"
-  rescue => e 
-    puts e.message
   end
 end
 
@@ -48,13 +58,14 @@ input = gets.chomp
 puts "Enter Sum : "
 sum = gets.chomp
 
-
 begin
   unless input.match?(/^\d+(,\d+)*$/)
-  raise "Invalid input. Please enter comma-separated integers."
-  raise "invalid datatype for sum" if sum != sum.to_i.to_s
+    raise "Invalid input. Please enter comma-separated integers."
+    raise "invalid datatype for sum" if sum != sum.to_i.to_s
   end
-  puts subs(input.split(",").map(&:to_i), input.split(",").size, sum.to_i)
+  subarray = Array_utlis.new(input.split(",").map(&:to_i), input.split(",").size, sum.to_i)
+  subarray.subs()
+  puts subarray.result
 rescue  => e
   STDERR.puts(e)
 end
