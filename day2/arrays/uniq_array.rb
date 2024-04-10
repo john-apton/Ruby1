@@ -1,8 +1,43 @@
 # a) All unique elements
-class Array_utils
-  def initialize (arr, n)
-      @arr = arr
-      @n = n
+
+# ########################################################################## #
+# Abstract
+# Exercise 4a: All unique elements 
+# Ref: https://www.geeksforgeeks.org/print-distinct-elements-given-integer-array/?ref=lbp
+# ########################################################################## #
+
+# ########################################################################## #
+# INITIAL SECTION
+# ########################################################################## #
+# #### #
+# Includes
+# #### #
+require 'pp'
+
+##
+# class UniqArray
+#   A class to find the the unique element in an array
+#   require a sequence of comma-seperated intergers in csv format
+#
+
+class UniqSort
+  attr_reader :output
+  def initialize 
+    @arr 
+    @n 
+    @output = []
+  end
+
+  def set_input (arr)
+    unless arr.match?(/^\d+(,\d+)*$/)
+    raise ArgumentError, "Invalid input. Please enter comma-separated integers."
+    end
+    if (arr.size == 0)
+      raise ArgumentError, "Require 1 args, but received 0"
+    end
+
+    @arr = arr.split(",").map(&:to_i)
+    @n = @arr.size
   end
 
   def arr_sort (arr)
@@ -22,22 +57,23 @@ class Array_utils
     sorted_array = self.arr_sort(@arr)
     for i in 0..@n-1
       if (sorted_array[i] != sorted_array[i+1])
-        puts sorted_array[i]
+        @output << sorted_array[i]
       end
     end
   end
 end
 
-puts "Enter array (eg: 1,2,3,4,5,6) : "
+puts "Enter comma seperated sequence of number eg: 1,2,3,4 without space : "
 input = gets.chomp
 
 begin
-  unless input.match?(/^\d+(,\d+)*$/)
-  raise "Invalid input. Please enter comma-separated integers."
-  end
-  uniq = Array_utils.new(input.split(","), input.size)
-  uniq.find_unique()
+  us = UniqSort.new
+  us.set_input(input)
+  us.find_unique
+  pp "The uiqe array is : #{us.output}"
+  exit 0
 rescue => e
   STDERR.puts(e)
+  exit 1
 end
 

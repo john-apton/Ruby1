@@ -50,9 +50,9 @@
 
 - All unique elements [:code](/day2/arrays/uniq_array.rb), [:Example](https://www.geeksforgeeks.org/print-distinct-elements-given-integer-array/?ref=lbp)
 - Bubble sort an array [:code](/day2/arrays/bubble_sort.rb), [:Example]()
-- Counting sort an array [:code](/day2/arrays), [:Example]()
+- Counting sort an array [:code](/day2/arrays), [:Example](https://www.geeksforgeeks.org/counting-sort/)
 - Merge sort an array [:code](/day2/arrays/merge_sorted_array.rb), [:Example]()
-- Quick sort an array [:code](/day2/arrays), [:Example]()
+- Quick sort an array [:code](/day2/arrays/quick_sort.rb), [:Example](https://www.geeksforgeeks.org/quick-sort/)
 - Sub-array with the given sum [:code](/day2/arrays/find_subarray_with%20_given_sum%20.rb), [:Example](https://www.geeksforgeeks.org/find-subarray-with-given-sum/?ref=lbp)
 - Inversion count in Array using Merge sort [:code](/day2/arrays/inversion_count.rb), [:Example](https://www.geeksforgeeks.org/inversion-count-in-array-using-merge-sort/?ref=lbp)
 - Rearrange an array using maximum minimum form [:code](/day2/arrays/max_min_rearrange.rb), [:Example](https://www.geeksforgeeks.org/rearrange-array-maximum-minimum-form-set-2-o1-extra-space/)
