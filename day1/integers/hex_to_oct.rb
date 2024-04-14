@@ -5,8 +5,6 @@ def converter (num)
   oct = []
   for i in 0..l-1
     r= num%8
-    # puts r
-    # puts num/8.floor
     num = num/8.floor
     oct.unshift(r)
   end
@@ -25,21 +23,19 @@ def convert(hex)
     "F" => 15
   }
   l = hex.length
-  return "Input cannot be empty" if l == 0
-  upHex = hex.upcase.reverse
-
-  dc = 0
-  for i in 0..l-1
-    # print "#{i} =>", upHex[i]
-    # puts
-    # puts (hexHash[upHex[i]] * 16**i)
-    # puts hexHash[upHex[i]]
-    dc += hexHash[upHex[i]] * 16**i
+  begin
+    raise StandardError.new "Input cannot be empty" if l == 0
+    upHex = hex.upcase.reverse
+    dc = 0
+    for i in 0..l-1
+      dc += hexHash[upHex[i]] * 16**i
+    end
+    puts "OCT: #{converter(dc)}"
+  rescue => e
+    STDERR.puts(e)
   end
-  # puts dc
-  return converter(dc)
 end
 
 print "Enter a HEX : "
 input = gets.chomp
-print "OCT: #{convert(input)}"
+convert(input)
